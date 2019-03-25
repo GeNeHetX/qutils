@@ -95,7 +95,7 @@ colwidths = c(5,3, 0.8, 1.2, 1.2),rename=NULL) {
 
 
 
-
+#pathwayName="StromaActiv";stats=x;fgseaRez=puleosec;pathwayDatabase=puleoComps
 qGseaPlot=function(pathwayName,stats,fgseaRez,pathwayDatabase,main=NULL,signifN=3,gseaParam=1,doprint=T)
 {
   data.table::setkey(fgseaRez,"pathway")
@@ -118,7 +118,7 @@ qGseaPlot=function(pathwayName,stats,fgseaRez,pathwayDatabase,main=NULL,signifN=
   diff <- (max(tops) - min(bottoms))/8
   x = y = NULL
 
-
+  print("proc")
   if(abs(max(tops))>abs(min(bottoms))){
     upper=max(tops) +0.15
     lower=0- diff/2
