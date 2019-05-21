@@ -33,7 +33,15 @@ qloadPath=function(){
   all
 }
 
+qloadImmu=function(){
 
+  newImmuneGenes = c("CXCL9","CXCL10","CXCL16","IFNG","IL15","PDCD1","CD274","PDCD1LG2","CTLA4","LAG3","HAVCR2","DPP4","LILRA3","CCL2","VEGFB","VEGFC","PDGFC","CXCL12","TGFB1","TGFB3","LGALS1","C1QB","C1R","C1S","C3","C3AR1","C5AR1","C7","CFD","CFH","CFI","CXCL13","HLA-A","HLA-B","HLA-C","HLA-E","HLA-F","HLA-G","B2M","FOXP3","TNFRSF18","CCR7","SELL","CD44","CD70","CD27","CD163","CD80")
+
+  newImmuneGenesGroups = c(rep("T cells chemotaxis and activation",5),rep("T cells specific inhibition",8),"Myeloid cells chemotactism",rep("Angiogenesis",3),rep("Immunosuppression",4),rep("Complement",10),"Tertiary lymphoid structures",rep("Major Histocompatibility Complex I",7),rep("Regulatory T cells",2),rep("Memory and naive T cells",3),rep("T cell survival",2),rep("Macrophages polarization",2))
+  newImmuneGenesGroups
+}
+
+#pathways=allpaths[selspaths];stats=nediffprotstat;fgseaRes=neprotgsea;gseaParam=1;colwidths = c(10,3, 0.8, 1.2, 1.2);rename=NULL
 qGseaTable=function (pathways, stats, fgseaRes, gseaParam = 1,
 colwidths = c(5,3, 0.8, 1.2, 1.2),rename=NULL) {
   require(fgsea)
