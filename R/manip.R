@@ -16,6 +16,26 @@ qfilt=function(x,mincounts=3,minsamples=0.05*ncol(x)){
 }
 
 
+quantNorm2ref <- function(x,ref){
+  if(nrow(ref)!=nrow(x)){
+    stop("both datsets need to have same number of rows")
+  }
+
+  xr <- apply(x,2,rank,ties.method="min")
+  refs <- data.frame(apply(ref, 2, sort))
+
+  refm=rowMeans(as.matrix(refs))
+
+  index_to_mean <- function(my_index, my_mean){
+    return(my_mean[my_index])
+  }
+  df_final <- apply(xr, 2, index_to_mean, my_mean=refm)
+  dimnames(df_final) <- dimnames(x)
+
+
+  return(df_final)
+}
+
 
 #' getUniqueGeneMat: get matrix of unique values (rows) per gene
 #'
