@@ -122,8 +122,8 @@ CCCP = function(projectTitle,
 
         subdat.norm=as.matrix(dat.norm[qkeep,])
 
-    cccpmetrics_subdata     =cit.clustMetric(subdat.norm,cccpConsMat,cccpConsHierarchy,cccpConsPart,2:Kmax,plot=T,pdf.name="CCCP.clustMetric_subdata.pdf")
-    cccpmetrics_alldata     =cit.clustMetric(dat.norm,cccpConsMat,cccpConsHierarchy,cccpConsPart,2:Kmax,plot=T,pdf.name="CCCP.clustMetric_alldata.pdf")
+    cccpmetrics_subdata     =.cit.clustMetric(subdat.norm,cccpConsMat,cccpConsHierarchy,cccpConsPart,2:Kmax,plot=T,pdf.name="CCCP.clustMetric_subdata.pdf")
+    cccpmetrics_alldata     =.cit.clustMetric(dat.norm,cccpConsMat,cccpConsHierarchy,cccpConsPart,2:Kmax,plot=T,pdf.name="CCCP.clustMetric_alldata.pdf")
 
 
 
@@ -135,7 +135,7 @@ CCCP = function(projectTitle,
 
 
 
-cit.clustMetric=function (expdata, consensuscooccurencematrix, hierarchy, partitions,
+.cit.clustMetric=function (expdata, consensuscooccurencematrix, hierarchy, partitions,
     ks = 2:ifelse(is.list(hierarchy), length(hierarchy) + 1,
         length(unique(partitions))), plot = T, pdf.name = "clustMetric.pdf",
     doGAPstat = F)
@@ -208,12 +208,12 @@ cit.clustMetric=function (expdata, consensuscooccurencematrix, hierarchy, partit
             2:(length(rez$silhouettes) + 1), sep = ""))
         N <- length(consensuscooccurencematrix)
         colv <- rainbow(N + 1)
-        cdf <- cit.computeCDF(consensuscooccurencematrix[[1]])
+        cdf <- .cit.computeCDF(consensuscooccurencematrix[[1]])
         plot(as.numeric(names(cdf)), cdf, xlab = "Consensus index value",
             ylab = "CDF", col = colv[1], type = "l", lwd = 2.5,
             main = "Cumulative Distribution Function")
         for (i in 2:N) {
-            tmp <- cit.computeCDF(consensuscooccurencematrix[[i]])
+            tmp <- .cit.computeCDF(consensuscooccurencematrix[[i]])
             lines(as.numeric(names(tmp)), tmp, col = colv[i],
               lwd = 2.5)
         }
@@ -235,7 +235,7 @@ else {
     if (doGAPstat)
         rez$gap = gap = try(gap(t(expdata), partitions[names(expdata)])[1])
     if (plot) {
-        cdf <- cit.computeCDF(consensuscooccurencematrix)
+        cdf <- .cit.computeCDF(consensuscooccurencematrix)
         plot(as.numeric(names(cdf)), cdf, xlab = "Consensus index value",
             ylab = "CDF", col = "red", type = "l", lwd = 2.5,
             main = "Cumulative Distribution Function")
@@ -249,7 +249,7 @@ rez
 }
 
 
-cit.computeCDF=function (coocurencematrix)
+.cit.computeCDF=function (coocurencematrix)
 {
     if (nrow(coocurencematrix) != ncol(coocurencematrix))
         stop("A co-classification (s x s) matrix is required")

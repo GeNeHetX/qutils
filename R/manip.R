@@ -1,19 +1,32 @@
-qnarm=function(x)x[which(!is.na(x))]
-qgivename=function(x,y){names(x)=y;x}
-qemptyrm=function(x)x[which(x!="")]
+
+
+loadREDCAP=function(rscript,dirscript){
+
+
+  system(paste("Rscript ",system.file("inst","processRedcap.R",package="processRedcap.R"),dirscript,rscript))
+
+  invisible(qload(file.path(dirscript,gsub("R$","RData",gsub("R","DATA",rscript)))))
+}
+
+qnarm=narm=function(x)x[which(!is.na(x))]
+
+
+qemptyrm=emptyrm=function(x)x[which(x!="")]
+
+
 
 qload=function (filename) {
   if (file.exists(filename))
     return(eval(parse(text = load(filename))))
-  cat(paste("error - function cit.load : file ", filename,
-            " doesn't exist\n"))
+  cat(paste("error - function qload : file ", filename,
+    " doesn't exist\n"))
   NULL
 }
 
 
-qfilt=function(x,mincounts=3,minsamples=0.05*ncol(x)){
-  x[which(rowSums(x>=mincounts)>=minsamples),]
-}
+# qfilt=function(x,mincounts=3,minsamples=0.05*ncol(x)){
+#   x[which(rowSums(x>=mincounts)>=minsamples),]
+# }
 
 
 quantNorm2ref <- function(x,ref){
