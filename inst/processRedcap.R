@@ -17,7 +17,7 @@ annot=data
 
 
 
-f=gsub("r$|R$","RData",gsub("R","DATA",.oldf))
+f=gsub("r$|R$","RData",gsub("_R_","_DATA_",.oldf))
 tmp=file.remove(paste0(.oldf,"nobomb.R"))
 
 

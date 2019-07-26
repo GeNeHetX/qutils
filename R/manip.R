@@ -7,7 +7,7 @@ loadREDCAP=function(rscript,dirscript){
 
   system(paste("Rscript ",system.file("processRedcap.R",package="qutils"),dirscript,rscript))
 
-  invisible(qload(file.path(dirscript,gsub("R$","RData",gsub("R","DATA",rscript)))))
+  invisible(qload(file.path(dirscript,gsub("r$|R$","RData",gsub("_R_","_DATA_",rscript)))))
 }
 
 qnarm=narm=function(x)x[which(!is.na(x))]
