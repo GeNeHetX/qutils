@@ -1,9 +1,11 @@
 
 
+
 loadREDCAP=function(rscript,dirscript){
 
 
-  system(paste("Rscript ",system.file("inst","processRedcap.R",package="processRedcap.R"),dirscript,rscript))
+
+  system(paste("Rscript ",system.file("processRedcap.R",package="qutils"),dirscript,rscript))
 
   invisible(qload(file.path(dirscript,gsub("R$","RData",gsub("R","DATA",rscript)))))
 }

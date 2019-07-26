@@ -6,7 +6,7 @@ setwd(args[1])
 .oldf<<-args[2]
 
 
-
+print(.oldf)
 system(paste0(" awk '{if(NR==1)sub(/^\\xef\\xbb\\xbf/,\"\");print}' ",.oldf," > ",.oldf,"nobomb.R"))
 source(paste0(args[2],"nobomb.R"))
 
@@ -17,7 +17,7 @@ annot=data
 
 
 
-f=gsub("R$","RData",gsub("R","DATA",.oldf))
+f=gsub("r$|R$","RData",gsub("R","DATA",.oldf))
 tmp=file.remove(paste0(.oldf,"nobomb.R"))
 
 
