@@ -16,7 +16,7 @@
 qfgsea=function(signedcor,pathways,n=1000,thresh=0.01){
   require(fgsea)
   set.seed(1)
-  xgsea=fgsea(  pathways,signedcor,nperm=n,nproc=1)
+  xgsea=fgseaSimple(  pathways,signedcor,nperm=n,nproc=1)
   xgsea=xgsea[which(xgsea$pval<thresh),]
   xgsea=xgsea[order(-abs(xgsea$NES)),]
   xgsea
