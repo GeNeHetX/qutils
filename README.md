@@ -2,7 +2,7 @@
 
 ## install
 ```R
-devtools::install_url("https://gitlab.ligue-cancer.net/remy.nicolle/qutils/-/archive/master/qutils-master.tar.gz")
+devtools::install_url(" https://github.com/RemyNicolle/qutils/archive/master.tar.gz")
 ```
 
 ## Pathway
