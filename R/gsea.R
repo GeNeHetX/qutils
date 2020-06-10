@@ -1,17 +1,3 @@
-# Hello, world!
-#
-# This is an example function named 'hello'
-# which prints 'Hello, world!'.
-#
-# You can learn more about package authoring with RStudio at:
-#
-#   http://r-pkgs.had.co.nz/
-#
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Build and Reload Package:  'Cmd + Shift + B'
-#   Check Package:             'Cmd + Shift + E'
-#   Test Package:              'Cmd + Shift + T'
 
 qfgsea=function(signedcor,pathways,n=1000,thresh=0.01){
   require(fgsea)
@@ -22,7 +8,7 @@ qfgsea=function(signedcor,pathways,n=1000,thresh=0.01){
   xgsea
 }
 
-qloadPath=function(){
+.qloadPath=function(){
 
   data("gs.MSigDB.PathwaysOnly.toSymbol.hs_RN_02032016.dump",package="qutils")
   data("KEGG_2016",package="qutils")
@@ -33,7 +19,7 @@ qloadPath=function(){
   all
 }
 
-qloadImmu=function(){
+.qloadImmu=function(){
 
   newImmuneGenes = c("CXCL9","CXCL10","CXCL16","IFNG","IL15","PDCD1","CD274","PDCD1LG2","CTLA4","LAG3","HAVCR2","DPP4","LILRA3","CCL2","VEGFB","VEGFC","PDGFC","CXCL12","TGFB1","TGFB3","LGALS1","C1QB","C1R","C1S","C3","C3AR1","C5AR1","C7","CFD","CFH","CFI","CXCL13","HLA-A","HLA-B","HLA-C","HLA-E","HLA-F","HLA-G","B2M","FOXP3","TNFRSF18","CCR7","SELL","CD44","CD70","CD27","CD163","CD80")
 
@@ -172,5 +158,3 @@ qGseaPlot=function(pathwayName,stats,fgseaRez,pathwayDatabase,main=NULL,signifN=
   }
 
 }
-
-

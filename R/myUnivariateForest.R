@@ -1,5 +1,5 @@
 
-myUnivariateForest=function(listCoxph,signifnum=3,printArgHelp=F, ...){
+.myUnivariateForest=function(listCoxph,signifnum=3,printArgHelp=F, ...){
 	if(printArgHelp){
 		print(paste("clip: upper and lower limit of HR to plots (adds arrow if necessary)",
 		"xlab for label of plot",
@@ -17,7 +17,7 @@ myUnivariateForest=function(listCoxph,signifnum=3,printArgHelp=F, ...){
 			signif(xx$conf.int[1,3],signifnum),"-",signif(xx$conf.int[1,4],signifnum),")")
 		})),
 		c("P-value (Wald)",sapply(listCoxph,function(x){
-			xx=summary(x); as.character(signif(xx$waldtest[3],signifnum))
+			xx=summary(x); as.character(signif( xx$coefficients[1,5],signifnum))
 		})),
 		c("P-value (Score)",sapply(listCoxph,function(x){
 			xx=summary(x); as.character(signif(xx$sctest[3],signifnum))
@@ -62,7 +62,7 @@ multivariateForest=function(acoxph,signifnum=3, ...){
 	library(forestplot)
 	tabletext=list(
 		c(NA,rownames(sumcox$conf.int)),
-		c("HR (95% CI)",apply(sumcox$conf.int[,c(1,3,4)],1,cipaste)),
+		c("HR (95% CI)",apply(sumcox$conf.int[,c(1,3,4)],1,.cipaste)),
 		c("P-value (Wald)",signif(sumcox$coefficients[,5], signifnum))
 	)
 	toplotvals=rbind(rep(NA,3),sumcox$conf.int[,c(1,3,4)])
@@ -166,7 +166,7 @@ dualunivariateForest=function(listCoxph1,listCoxph2,signifnum=3,cols=c("green","
 }
 
 
-cipaste=function(xv){
+.cipaste=function(xv){
 	xv=signif(xv,3)
 	paste0(xv[1]," (",xv[2],"-",xv[3],")")
 }
