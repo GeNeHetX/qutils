@@ -2,7 +2,7 @@
 
 ## install
 ```R
-devtools::install_url(" https://github.com/RemyNicolle/qutils/archive/master.tar.gz")
+devtools::install_url("https://github.com/RemyNicolle/qutils/archive/master.tar.gz")
 ```
 
 ## Pathway
