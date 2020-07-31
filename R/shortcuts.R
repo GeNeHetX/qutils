@@ -1,3 +1,12 @@
+rowMeanCorrectedSD=function (X) 
+{
+    m = rowMeans(X)
+    s = rowSds(X)
+    r = rank(rowMins(cbind(rank(m), rank(s))))/nrow(X)
+    names(r) = rownames(X)
+    r
+}
+
 qlimma = function(expressiondata,samplesgrp1,samplesgrp2,thresh=0.01,namesonly=T,addWillcox=F){
   library(limma)
   samplesgrp1=intersect(samplesgrp1,colnames(expressiondata))
