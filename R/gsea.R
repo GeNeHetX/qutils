@@ -1,4 +1,7 @@
 
+autopathrenam=function(path){gsub("_Homo sapiens_.+","",gsub("^[^~]+~","",path))}
+
+
 qfgsea=function(signedcor,pathways,n=1000,thresh=0.01){
   require(fgsea)
   set.seed(1)
