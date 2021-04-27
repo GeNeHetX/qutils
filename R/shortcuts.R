@@ -1,4 +1,11 @@
-rowMeanCorrectedSD=function (X) 
+UQnorm=function (rawcounts)
+{
+	log2(1 + (t(t(rawcounts)/apply(rawcounts, 2, function(x) {
+		quantile(x[which(x > 0)], probs = 0.75)
+	})) * 1000))
+}
+
+rowMeanCorrectedSD=function (X)
 {
     m = rowMeans(X)
     s = rowSds(X)
@@ -33,4 +40,3 @@ qlimma = function(expressiondata,samplesgrp1,samplesgrp2,thresh=0.01,namesonly=T
   }
 
 }
-
