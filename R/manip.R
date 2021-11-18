@@ -1,5 +1,10 @@
 
 
+qNumerote=function(n,l=max(nchar(1:n))) {
+  str_pad(1:n,width=l,side="left",pad=0)
+}
+
+
 
 loadREDCAP=function(rscript,dirscript){
 
