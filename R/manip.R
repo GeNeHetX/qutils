@@ -36,6 +36,15 @@ qload=function (filename) {
 # }
 
 
+#' Title Quantile normalization
+#'
+#' @param x new expression dataset to be normalied
+#' @param ref reference dataset to be used as reference for quantile noralisation
+#'
+#' @return quntile normalized x
+#' @export
+#'
+#' @examples
 quantNorm2ref <- function(x,ref){
   if(nrow(ref)!=nrow(x)){
     stop("both datsets need to have same number of rows")

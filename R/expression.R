@@ -31,8 +31,40 @@ qICA=function(X,k,maxiter = 10^6,eps = 10^-6){
 
 
 
+#' Title Simple ICA projection, default using Puleo et al components
+#'
+#' @param newexp A new expression dataset
+#' @param ICAgw ICA gene weights (S matrix)
+#' @param geneNormType Normalization of gene expression matrix (sc: sample scale is default)
+#' @param projNormType Normalization of components (raw:  is default)
+#' @param ming Minimum number of overlapping genes
+#'
+#' @return projected components
+#' @export
+#'
+#' @examples
+qProjICA=function(newexp,ICAgw=qutils:::.puleoICA$gw,geneNormType="sc",projNormType="raw",ming=500){
 
-qProjICA=function(icarez,dataset,geneNormType="sc",projNormType="raw",removeZeros=F){
+  comg = intersect(rownames(newexp), rownames(ICAgw))
+
+  if(length(comg)<ming){
+    stop("Too few genes in common in the expression dataset and the ICA weights")
+  }
+
+  scexp = qutils::qNormalize(newexpp[comg, ],type=geneNormType)
+
+  invs = MASS::ginv(as.matrix(ICAgw[comg,]))
+
+  proj=t(qutils::qNormalize(invs %*%  scexp,projNormType))
+
+  colnames(proj)=colnames(icarez)
+  proj
+
+}
+
+
+
+qProjICA.ds=function(icarez,dataset,geneNormType="sc",projNormType="raw"){
 
   # expg=getUniqueGeneMat(dataset$exp,dataset$probeannot[rownames(dataset$exp),dataset$genecol],rowSds(as.matrix(dataset$exp)))
   # comg = intersect(rownames(icarez$S), rownames(expg))
@@ -49,3 +81,7 @@ qProjICA=function(icarez,dataset,geneNormType="sc",projNormType="raw",removeZero
   proj
 
 }
+
+
+
+

@@ -11,16 +11,6 @@ qfgsea=function(signedcor,pathways,n=1000,thresh=0.01){
   xgsea
 }
 
-.qloadPath=function(){
-
-  data("gs.MSigDB.PathwaysOnly.toSymbol.hs_RN_02032016.dump",package="qutils")
-  data("KEGG_2016",package="qutils")
-  data("WikiPathways_2016",package="qutils")
-
-  all=c(msigdb,NewKegg,WikiPath)
-  rm(msigdb,NewKegg,WikiPath,pos=1)
-  all
-}
 
 .qloadImmu=function(){
 
@@ -29,6 +19,7 @@ qfgsea=function(signedcor,pathways,n=1000,thresh=0.01){
   newImmuneGenesGroups = c(rep("T cells chemotaxis and activation",5),rep("T cells specific inhibition",8),"Myeloid cells chemotactism",rep("Angiogenesis",3),rep("Immunosuppression",4),rep("Complement",10),"Tertiary lymphoid structures",rep("Major Histocompatibility Complex I",7),rep("Regulatory T cells",2),rep("Memory and naive T cells",3),rep("T cell survival",2),rep("Macrophages polarization",2))
   newImmuneGenesGroups
 }
+
 
 #pathways=allpaths[selspaths];stats=nediffprotstat;fgseaRes=neprotgsea;gseaParam=1;colwidths = c(10,3, 0.8, 1.2, 1.2);rename=NULL
 qGseaTable=function (pathways, stats, fgseaRes, gseaParam = 1,

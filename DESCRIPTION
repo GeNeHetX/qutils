@@ -1,10 +1,15 @@
 Package: qutils
 Type: Package
-Title: Couple of utilise function
+Title: Couple of utility function
 Version: 0.2.0
 Author: Remy Nicolle
-Maintainer: The package maintainer <yourself@somewhere.net>
+Maintainer: Remy Nicolle <remy.c.nicolle@gmail.comt>
 Description: functions for daily use
 License: MIT
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.2
+Depends: 
+    R (>= 2.10)
+Imports:
+  estimate, MASS
