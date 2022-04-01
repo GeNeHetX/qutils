@@ -43,7 +43,7 @@ qICA=function(X,k,maxiter = 10^6,eps = 10^-6){
 #' @export
 #'
 #' @examples
-qProjICA=function(newexp,ICAgw=qutils:::.puleoICA$gw,geneNormType="sc",projNormType="raw",ming=500){
+qProjICA=function(newexp,ICAgw=qutils:::.puleoICAgw,geneNormType="sc",projNormType="raw",ming=500){
 
   comg = intersect(rownames(newexp), rownames(ICAgw))
 
