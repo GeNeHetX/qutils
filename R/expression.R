@@ -57,7 +57,7 @@ qProjICA=function(newexp,ICAgw=qutils:::.puleoICAgw,geneNormType="sc",projNormTy
 
   proj=t(qutils::qNormalize(invs %*%  scexp,projNormType))
 
-  colnames(proj)=colnames(icarez)
+  colnames(proj)=colnames(ICAgw)
   proj
 
 }
