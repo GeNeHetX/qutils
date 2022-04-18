@@ -51,7 +51,7 @@ qProjICA=function(newexp,ICAgw=qutils:::.puleoICAgw,geneNormType="sc",projNormTy
     stop("Too few genes in common in the expression dataset and the ICA weights")
   }
 
-  scexp = qutils::qNormalize(newexpp[comg, ],type=geneNormType)
+  scexp = qutils::qNormalize(newexp[comg, ],type=geneNormType)
 
   invs = MASS::ginv(as.matrix(ICAgw[comg,]))
 
