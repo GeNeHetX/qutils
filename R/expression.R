@@ -67,11 +67,11 @@ qProjICA=function(newexp,ICAgw=qutils:::.puleoICAgw,geneNormType="sc",projNormTy
 qProjICA.ds=function(icarez,dataset,geneNormType="sc",projNormType="raw"){
 
   # expg=getUniqueGeneMat(dataset$exp,dataset$probeannot[rownames(dataset$exp),dataset$genecol],rowSds(as.matrix(dataset$exp)))
-  # comg = intersect(rownames(icarez$S), rownames(expg))
-  scexp = qutils::qNormalize(dat$exp[rownames(icarez$S), ],type=geneNormType)
+   comg = intersect(rownames(icarez$S), rownames(dataset$exp))
+  scexp = qutils::qNormalize(dataset$exp[comg, ],type=geneNormType)
 
 
-  invs = MASS::ginv(as.matrix(icarez$S))
+  invs = MASS::ginv(as.matrix(icarez$S[comg,]))
 
   proj=t(qutils::qNormalize(invs %*%  scexp,projNormType))
 
